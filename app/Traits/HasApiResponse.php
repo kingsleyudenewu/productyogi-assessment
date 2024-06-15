@@ -27,7 +27,7 @@ trait HasApiResponse
             $response['links'] = Arr::get($data, 'links');
         }
 
-        return Response::json($response, $status);
+        return new JsonResponse($response, $status);
     }
 
     /**
