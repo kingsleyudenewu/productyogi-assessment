@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         $action->execute($request->only(['name', 'email', 'password']));
 
-        return $this->createdResponse('User registered successfully');
+        return $this->createdResponse('User created successfully');
     }
 
     /**

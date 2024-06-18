@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $postCollection = Post::with('user')->latest()->paginate();
 

@@ -18,10 +18,9 @@ class DatabaseSeeder extends Seeder
          User::factory(10)->create()
              ->each(fn($user) => Post::factory(5)->create([
                  'user_id' => $user->id,
-             ]))
-             ->each(fn($post) => $post->comments()->createMany(
+             ])->each(fn($post) => $post->comments()->createMany(
                  Comment::factory(3)->make(['post_id' => $post->id])->toArray()
-             ));
+             )));
 
          User::factory()->isAdmin()->create([
              'name' => 'Test User',
