@@ -16,9 +16,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
-        $postCollection = Post::with('user')->latest()->paginate();
+        $postCollection = Post::with('user')->searchPost($request)->paginate();
 
         $resourceData = PostResource::collection($postCollection)->response();
 

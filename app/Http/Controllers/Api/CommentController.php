@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -26,15 +21,5 @@ class CommentController extends Controller
         $commentData = (new CreateCommentAction())->execute($request->validated());
 
         return $this->createdResponse('Comment created successfully', $commentData);
-    }
-
-    public function show(int $id)
-    {
-
-    }
-
-    public function update()
-    {
-
     }
 }
