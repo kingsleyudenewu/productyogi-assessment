@@ -31,10 +31,10 @@ class Post extends Model
     {
         return $query->orderBy('created_at', 'desc')
             ->when($request->has('title'), function($query) use ($request) {
-                return $query->where('title', 'like', "%{$request->title}%");
+                return $query->where('title', 'like', "%{$request->input('title')}%");
             })
             ->when($request->has('content'), function($query) use ($request) {
-                return $query->where('content', 'like', "%{$request->content}%");
+                return $query->where('content', 'like', "%{$request->input('content')}%");
             });
     }
 }
