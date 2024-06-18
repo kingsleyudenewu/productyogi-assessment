@@ -53,13 +53,30 @@ class PostController extends Controller
         return $this->successResponse('Post fetched successfully.', $resourceData);
     }
 
-    public function update()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Post $post
+     * @param CreatePostRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Post $post, CreatePostRequest $request): \Illuminate\Http\JsonResponse
     {
+        $postData = (new CreatePostAction())->updatePost($post, $request->validated());
 
+        return $this->successResponse('Post updated successfully', $postData);
     }
 
-    public function destroy()
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Post $post
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Post $post): \Illuminate\Http\JsonResponse
     {
+        $post->delete();
 
+        return $this->successResponse('Post deleted successfully.');
     }
 }
