@@ -24,6 +24,7 @@ class CreatePostRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255', 'unique:posts'],
             'content' => ['required', 'string'],
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

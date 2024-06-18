@@ -23,7 +23,7 @@ class CreateCommentRequest extends FormRequest
     {
         return [
             'content' => ['required', 'string'],
-            'post_id' => ['required', 'integer'],
+            'post_id' => ['required', 'integer', 'exists:posts,id'],
         ];
     }
 }
